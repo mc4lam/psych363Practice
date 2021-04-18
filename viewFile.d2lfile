@@ -1,0 +1,52 @@
+#+Title: My First Reprodoucible Report
+#+Author: Matthew Lam
+
+
+* Introduction
+Words Words Words
+
+* Methods
+
+Participants were placed into a room and given instructions to fill out consent. Participants started the computer game upon command. 
+
+* Results
+
+#+BEGIN_SRC R :session *Rplot* :results output :exports both
+url <- "http://personality-project.org/r/datasets/heating.txt"
+
+d <- read.delim(url, sep = "\t")
+
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC R :session *Rplot* :results file graphics replace :exports both :file "mattLam-r-plt.png"
+
+library(ggplot2)
+
+qplot(x = degreedays, y = therms, color = Location, data = d) + 
+  geom_smooth(method = "lm", se = FALSE)
+
+
+#+END_SRC
+
+#+BEGIN_SRC R :session *Rdata* :exports none :results none
+
+url <- "http://personality-project.org/r/datasets/heating.txt"
+
+data <- read.delim(url, sep = "\t")
+
+#+END_SRC
+
+
+The mean degree days is src_R[:session *Rdata* :exports results :results raw]{mean(data$degreedays)}.
+
+* Conclusions
+
+Something that is important to note is depression in late life. It is the most frequent cause of emotional suffering in late life \cite{depression2003blazer}
+
+ 
+#+latex: \bibliographystyle{apalike}
+#+latex: \bibliography{firstReport}
+
+
